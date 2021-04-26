@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :pictures
   resources :places
   devise_for :users
-  root to: "users/sign_in#index"
+  root to: "places#index"
 end

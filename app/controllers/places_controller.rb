@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /places or /places.json
   def index

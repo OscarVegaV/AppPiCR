@@ -7,7 +7,29 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "./main.scss"
+import "./offcanvas.css"
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import jQuery from 'jquery'
+global.$ = global.jQuery = jQuery
+window.$ = window.jQuery = jQuery 
+
+import "bootstrap/dist/js/bootstrap"
+//para que sirba el boton
+document.addEventListener('turbolinks:load', function(){
+
+  $(function () {
+    'use strict'
+  
+    $('[data-toggle="offcanvas"]').on('click', function () {
+      $('.offcanvas-collapse').toggleClass('open')
+    })
+  })
+})
+
+

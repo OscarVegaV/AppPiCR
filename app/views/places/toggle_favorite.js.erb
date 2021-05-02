@@ -1,0 +1,17 @@
+var placesId = '<%= @place.id%>'
+
+
+
+function toggleLikeButton(placeId, favoritedPlace) {
+  let likeButton = document.querySelector(`.like-icon[data-id='${placeId}']`)
+  likeButton.classList.toggle('red');
+  if (likeButton.classList.contains('red')) {
+    const favoriteList = document.querySelector('.favorites');
+    favoriteList.insertAdjacentHTML('beforeend', favoritedPlace)
+  }
+  else {
+    document.querySelector(`.favorite[data-id='${placeId}']`).remove()
+  }
+}
+
+toggleLikeButton(placeId, '<%= j render "places/place", place: @place %>');

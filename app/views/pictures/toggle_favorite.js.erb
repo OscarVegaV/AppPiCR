@@ -1,0 +1,17 @@
+var picturesId = '<%= @picture.id%>'
+
+
+
+function toggleLikeButton(pictureId, favoritedPicture) {
+  let likeButton = document.querySelector(`.like-icon[data-id='${pictureId}']`)
+  likeButton.classList.toggle('red');
+  if (likeButton.classList.contains('red')) {
+    const favoriteList = document.querySelector('.favorites');
+    favoriteList.insertAdjacentHTML('beforeend', favoritedPicture)
+  }
+  else {
+    document.querySelector(`.favorite[data-id='${pictureId}']`).remove()
+  }
+}
+
+toggleLikeButton(pictureId, '<%= j render "pictures/picture", picture: @picture %>');

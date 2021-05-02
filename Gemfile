@@ -31,6 +31,7 @@ gem 'devise'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'coffee-rails'
+gem 'acts_as_favoritor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

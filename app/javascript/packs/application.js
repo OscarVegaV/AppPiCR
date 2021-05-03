@@ -17,8 +17,9 @@ ActiveStorage.start()
 
 import jQuery from 'jquery'
 global.$ = global.jQuery = jQuery
-window.$ = window.jQuery = jQuery 
+window.$ = window.jQuery = jQuery
 
+import "@fortawesome/fontawesome-free/js/all"
 import "bootstrap/dist/js/bootstrap"
 //para que sirba el boton
 document.addEventListener('turbolinks:load', function(){

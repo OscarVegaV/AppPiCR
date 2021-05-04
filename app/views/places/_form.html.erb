@@ -21,7 +21,49 @@
     <%= form.text_field :address %>
   </div>
 
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+<%# 
+ <!-- Material form subscription -->
+<div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>New Place</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5">
+
+        <!-- Form -->
+        <form class="text-center" style="color: #757575;" action="#!">
+
+                  <!-- Name -->
+            <div class="md-form mt-3">
+                <input type="text" id="materialSubscriptionFormPasswords" class="form-control">
+                <label for="materialSubscriptionFormPasswords">Name</label>
+            </div>
+
+            <!-- E-mai -->
+            <div class="md-form">
+                <input type="email" id="materialSubscriptionFormEmail" class="form-control">
+                <label for="materialSubscriptionFormEmail">Address</label>
+            </div>
+
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Create Place</button>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form subscription --> %>
+
 <% end %>

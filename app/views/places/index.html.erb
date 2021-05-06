@@ -22,6 +22,7 @@
         <td><%= link_to 'Show', place %></td>
         <td><%= link_to 'Edit', edit_place_path(place) %></td>
         <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Comment', new_place_comment_path(place.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -54,4 +55,4 @@
 
 
 <%= link_to 'New Place', new_place_path %>
-<%# <%= link_to 'comment', new_comment_path %> %>
+

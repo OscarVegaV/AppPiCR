@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+    @place = Place.find(params[:place_id])
+    @comment = @place.comments.build
   end
 
   # GET /comments/1/edit
@@ -65,6 +67,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:user_id, :commentable_id)
+      params.require(:comment).permit(:user_id, :commentable_id, :commentable_type, :content)
     end
 end

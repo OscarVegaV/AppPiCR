@@ -27,6 +27,7 @@
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Comment', new_picture_comment_path(picture) %></td>
       </tr>
     <% end %>
   </tbody>

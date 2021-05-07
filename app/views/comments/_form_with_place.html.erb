@@ -1,3 +1,4 @@
+<p> <%= @place.name %></p>
 
 <%= form_with(model: comment) do |form| %>
   <% if comment.errors.any? %>
@@ -11,6 +12,22 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+
+  <div class="field">
+      <%= form.label :commentable_type %>
+      <%= form.text_field :commentable_type %>
+    </div>
+  <div class="field">
+      <%= form.label :commentable_id %>
+      <%= form.text_field :commentable_id %>
+   </div>
+  
 
   <div class="field">
     <%= form.label :content %>

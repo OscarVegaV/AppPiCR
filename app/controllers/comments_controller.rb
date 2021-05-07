@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: %i[ new edit create update destroy ]
   before_action :set_comment, only: %i[ show edit update destroy ]
   
   # GET /comments or /comment.json
@@ -12,10 +13,8 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/new
-  def new
-    @comment = Comment.new
-    @place = Place.find(params[:place_id])
-    @comment = @place.comments.build
+  def new    
+    @comment = comment_to
   end
 
   # GET /comments/1/edit
@@ -24,8 +23,8 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
-
+    @comment = comment_to
+    @comment.user = current_user
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: "comment was successfully created." }
@@ -69,4 +68,17 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:user_id, :commentable_id, :commentable_type, :content)
     end
+    
+    def comment_to
+      if params[:place_id]
+        @place = Place.find(params[:place_id])
+        params[:comment] ? @place.comments.build(comment_params) : @place.comments.build    #retorna commentario
+      elsif params[:picture_id]
+        @picture = Picture.find(params[:picture_id])
+        params[:comment] ? @picture.comments.build(comment_params) : @picture.comments.build #retorna commentario
+      else
+        params[:comment] ? current_user.comments.build(comment_params) : current_user.comments.build   #retorna commentario
+      end
+    end
+
 end

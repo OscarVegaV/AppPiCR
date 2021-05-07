@@ -13,8 +13,15 @@
   </thead>
 
   <tbody>
-    <% @pictures.each do |picture| %>
+  <% @pictures.each do |picture| %>
       <tr>
+
+        <td>
+          
+            <%= image_tag picture.photo.variant(resize: '20x20').processed %>
+
+        </td>
+  
         <td><%= picture.user_id %></td>
         <td><%= picture.place_id %></td>
         <td><%= link_to 'Show', picture %></td>
@@ -27,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Picture', new_picture_path %>
+

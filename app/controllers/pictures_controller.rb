@@ -1,9 +1,10 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit create update destroy ]
   
-  # GET /pictures or /pictures.json
+  # GET /pictures or /pictures.json dentro del metodo index aquí hay que revisar si tiene el place id para rescatar todas las fotos.
   def index
-    @pictures = Picture.all
+    @pictures = Picture.with_attached_photo.all
   end
 
   # GET /pictures/1 or /pictures/1.json
@@ -12,7 +13,8 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    @place = Place.find(params[:place_id])
+    @picture = @place.pictures.build
   end
 
   # GET /pictures/1/edit
@@ -22,6 +24,8 @@ class PicturesController < ApplicationController
   # POST /pictures or /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture.user = current_user
+    @picture.place = Place.find(params[:place_id])
 
     respond_to do |format|
       if @picture.save
@@ -59,7 +63,7 @@ class PicturesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_picture
-      @picture = Picture.find(params[:id])
+      @picture = Picture.with_attached_photo.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -12,5 +12,17 @@
   <%= @picture.place_id %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+
+<% if @picture.photo.attached? %>
+  <ul>
+
+  <li>
+    <%= link_to 'X', photo_picture_path(@picture), method: :delete, data:{confirm:'are you sure?'} %>
+    <%= image_tag @picture.photo.variant(resize:'200x200').processed %>
+  </li>  
+
+    </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_place_picture_path(@picture.place, @picture) %> |
+<%= link_to 'Back', place_pictures_path(@picture.place) %>

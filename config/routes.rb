@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :pictures
   end
 
-  resources :pictures, only:[:show, :index, :edit] do
+  resources :pictures, only:[:show, :index, :edit, :destroy] do
     resources :comments
 
     member do

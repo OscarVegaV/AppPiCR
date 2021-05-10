@@ -19,6 +19,8 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    @place = Place.find(params[:place_id])
+
   end
 
   # POST /pictures or /pictures.json

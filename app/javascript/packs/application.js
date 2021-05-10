@@ -22,6 +22,7 @@ window.$ = window.jQuery = jQuery
 import "@fortawesome/fontawesome-free/js/all"
 import "bootstrap/dist/js/bootstrap"
 //para que sirba el boton
+
 document.addEventListener('turbolinks:load', function(){
 
   $(function () {
@@ -32,5 +33,3 @@ document.addEventListener('turbolinks:load', function(){
     })
   })
 })
-
-

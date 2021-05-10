@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @picture.user_id %>
+  <%= @picture.user.email %>
 </p>
 
 <p>
   <strong>Place:</strong>
-  <%= @picture.place_id %>
+  <%= @picture.place.name %>
 </p>
 
 
@@ -15,7 +15,7 @@
   <ul>
 
   <li>
-    <%= link_to 'X', photo_picture_path(@picture), method: :delete, data:{confirm:'are you sure?'} %>
+   
     <%= image_tag @picture.photo.variant(resize:'200x200').processed %>
   </li>  
 

@@ -1,8 +1,6 @@
-var picturesId = '<%= @picture.id%>'
+var pictureId = '<%= @picture.id%>'
 
-
-
-function toggleLikeButton(pictureId, favoritedPicture) {
+function toggleLikeButton(pictureId) {
   let likeButton = document.querySelector(`.like-icon[data-id='${pictureId}']`)
   likeButton.classList.toggle('red');
   if (likeButton.classList.contains('red')) {

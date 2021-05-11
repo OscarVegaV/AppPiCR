@@ -22,5 +22,9 @@
     </ul>
 <% end %>
 
+<%= link_to toggle_favorite_picture_path(@picture), remote: true, method: :post do %>
+  <%= render 'pictures/like_button', picture: @picture %>
+<% end %>
+
 <%= link_to 'Editar', edit_place_picture_path(@picture.place, @picture) %> |
 <%= link_to 'Atras', place_pictures_path(@picture.place) %>

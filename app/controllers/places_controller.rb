@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
 
   # GET /places or /places.json
   def index
+    @user = User.all
     @places = Place.all
     @comments =  Comment.all
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
@@ -31,7 +32,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: "Place was successfully created." }
+        format.html { redirect_to @place, notice: "El lugar se creó correctamente." }
         format.json { render :show, status: :created, location: @place }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +45,7 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: "Place was successfully updated." }
+        format.html { redirect_to @place, notice: "El lugar se actualizó correctamente." }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,9 +58,14 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to places_url, notice: "Place was successfully destroyed." }
+      format.html { redirect_to places_url, notice: "El lugar fue destruido con éxito." }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_favorite
+    @place = Place.find_by(id: params[:id])
+    current_user.favorited?(@place) ? current_user.unfavorite(@place) : current_user.favorite(@place)
   end
 
   private

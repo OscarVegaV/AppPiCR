@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Usuario:</strong>
   <%= @picture.user.email %>
 </p>
 
 <p>
-  <strong>Place:</strong>
+  <strong>Lugar:</strong>
   <%= @picture.place.name %>
 </p>
 
@@ -16,11 +16,11 @@
 
   <li>
    
-    <%= image_tag @picture.photo.variant(resize:'200x200').processed %>
+    <%= image_tag @picture.photo.variant(resize:'400x400').processed %>
   </li>  
 
     </ul>
 <% end %>
 
-<%= link_to 'Edit', edit_place_picture_path(@picture.place, @picture) %> |
-<%= link_to 'Back', place_pictures_path(@picture.place) %>
+<%= link_to 'Editar', edit_place_picture_path(@picture.place, @picture) %> |
+<%= link_to 'Atras', place_pictures_path(@picture.place) %>

@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @place.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Dirección:</strong>
   <%= @place.address %>
 </p>
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
-<%= link_to 'Add Picture', new_place_picture_path(@place) %>
+<%= link_to 'Editar', edit_place_path(@place) %> |
+<%= link_to 'Atras', places_path %>
+<%= link_to 'Agregar Imagen', new_place_picture_path(@place) %>

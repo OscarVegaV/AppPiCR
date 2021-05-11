@@ -2,13 +2,13 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/header' %>
 
-<h1>Places</h1>
+<h1>Lugares</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
       
       <th colspan="3"></th>
     </tr>
@@ -19,10 +19,10 @@
       <tr>
         <td><%= place.name %></td>
         <td><%= place.address %></td>
-        <td><%= link_to 'Show', place %></td>
-        <td><%= link_to 'Edit', edit_place_path(place) %></td>
-        <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Comment', new_place_comment_path(place) %></td>
+        <td><%= link_to 'Mostrar', place %></td>
+        <td><%= link_to 'Editar', edit_place_path(place) %></td>
+        <td><%= link_to 'Borrar', place, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <td><%= link_to 'Comentar', new_place_comment_path(place) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -54,5 +54,5 @@
 </script>
 
 
-<%= link_to 'New Place', new_place_path %>
+<%= link_to 'Nuevo Lugar', new_place_path %>
 

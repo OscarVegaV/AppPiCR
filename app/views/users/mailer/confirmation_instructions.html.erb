@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bienvenido <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Usted puede confirmar su dirección de correo electrónico en el vínculo abajo</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Confirme su cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>

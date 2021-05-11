@@ -2,7 +2,7 @@
 <%= form_with(model: comment) do |form| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= pluralize(comment.errors.count, "error") %> Este comentario no se puede guardar:</h2>
 
       <ul>
         <% comment.errors.each do |error| %>

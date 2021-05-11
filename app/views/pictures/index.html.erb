@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 <%= render 'shared/navbar' %>
 <%# <%= render 'shared/header' %>
-<h1>Pictures</h1>
+<h1>Fotografías</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Place</th>
+      <th>Usuario</th>
+      <th>Lugar</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,16 +18,16 @@
 
         <td>
           
-            <%= image_tag picture.photo.variant(resize: '20x20').processed %>
+            <%= image_tag picture.photo.variant(resize: '150x150').processed %>
 
         </td>
   
-        <td><%= picture.user_id %></td>
-        <td><%= picture.place_id %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Comment', new_picture_comment_path(picture) %></td>
+        <td><%= picture.user.name %></td>
+        <td><%= picture.place.name %></td>
+        <td><%= link_to 'Mostrar', picture %></td>
+        <td><%= link_to 'Editar', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Eliminar', picture, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <td><%= link_to 'Comentar', new_picture_comment_path(picture) %></td>
       </tr>
     <% end %>
   </tbody>

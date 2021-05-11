@@ -10,6 +10,11 @@
   <%= @place.address %>
 </p>
 
+
+<%= link_to toggle_favorite_place_path(@place), remote: true, method: :post do %>
+  <%= render 'places/like_button', place: @place %>
+<% end %>
+
 <%= link_to 'Editar', edit_place_path(@place) %> |
 <%= link_to 'Atras', places_path %>
 <%= link_to 'Agregar Imagen', new_place_picture_path(@place) %>

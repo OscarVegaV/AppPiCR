@@ -74,3 +74,13 @@ body {
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
+
+.a {
+  color: black; 
+  text-decoration: none;
+}
+
+
+.red {
+  color: #ff0000;
+}

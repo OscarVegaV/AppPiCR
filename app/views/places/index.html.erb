@@ -1,58 +1,91 @@
-<p id="notice"><%= notice %></p>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>  <p id="notice"><%= notice %></p></strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <%= render 'shared/navbar' %>
 <%= render 'shared/header' %>
 
-<h1>Lugares</h1>
+<h1 class="text-center">Lugares</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Dirección</th>
-      
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @places.each do |place| %>
+<div class="container table-responsive-md d-none d-sm-block">
+	<table id="example" class="table table-striped table-bordered" style="width: 1000px;">
+    <thead>
       <tr>
-        <td><%= place.name %></td>
-        <td><%= place.address %></td>
-        <td><%= link_to 'Mostrar', place %></td>
-        <td><%= link_to 'Editar', edit_place_path(place) %></td>
-        <td><%= link_to 'Borrar', place, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
-        <td><%= link_to 'Comentar', new_place_comment_path(place) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <th>Nombre</th>
+        <th>Dirección</th>
 
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td><%= place.name %></td>
+          <td><%= place.address %></td>
+          <td><%= link_to 'Mostrar', place %></td>
+          <td><%= link_to 'Editar', edit_place_path(place) %></td>
+          <td><%= link_to 'Borrar', place, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+          <td><%= link_to 'Comentar', new_place_comment_path(place) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="container table-responsive-md d-block d-sm-none">
+	<table id="example" class="table table-striped table-bordered" style="width: 1000px;">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td><%= place.name %></td>
+          <td><%= link_to 'Mostrar', place %></td>
+          <td><%= link_to 'Editar', edit_place_path(place) %></td>
+          <td><%= link_to 'Borrar', place, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+          <td><%= link_to 'Comentar', new_place_comment_path(place) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<a class="badge badge-primary d-flex justify-content-center"<%= link_to 'Nuevo Lugar', new_place_path %></a>
 <br>
 
-<div style='width: 640px;'>
-  <div id="map" style='width: 640px; height: 320px;'></div>
+<div class="container table-responsive-md d-flex justify-content-center">
+  <div style='width: 500px;'>
+    <div id="map" style='width: 640px; height: 320px;'></div>
+  </div>
+  <script>
+    handler = Gmaps.build('Google');
+
+    handler.buildMap({ provider: {
+      center: new google.maps.LatLng({lat: -34, lng: -33}),
+      zoom: 4
+    }, internal: {
+      id: 'map'}
+      },
+    function(){
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+
+    google.maps.event.addListener(handler.getMap(), "click", function(){
+      console.log("hola");
+    });
+  </script>
+
 </div>
-<script>
-  handler = Gmaps.build('Google');
 
-  handler.buildMap({ provider: {
-    center: new google.maps.LatLng({lat: -34, lng: -33}),
-    zoom: 4
-  }, internal: {
-    id: 'map'}
-    },
-  function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-
-  google.maps.event.addListener(handler.getMap(), "click", function(){
-    console.log("hola");
-  });
-</script>
-
-
-<%= link_to 'Nuevo Lugar', new_place_path %>
 

@@ -1,3 +1,6 @@
+<%= render 'shared/navbar' %>
+<div class="mx-auto p-3" style="width: 500px;"></div>
+
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>  <p id="notice"><%= notice %></p></strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -6,39 +9,32 @@
 </div>
 <%= render 'shared/navbar' %>
 
-<h1>Fotografías</h1>
+<h1 class="text-center">Fotografías</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Usuario</th>
-      <th>Lugar</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-  <% @pictures.each do |picture| %>
+
+<div class="container table-responsive-md">
+	<table id="example" class="table table-striped table-bordered" style="width: 1000px;">
+    <thead>
       <tr>
+        <th>Usuario</th>
+        <th>Lugar</th>
 
-        <td>
-          
-            <%= image_tag picture.photo.variant(resize: '150x150').processed %>
-
-        </td>
-  
-        <td><%= picture.user.name %></td>
-        <td><%= picture.place.name %></td>
-        <td><%= link_to 'Mostrar', picture %></td>
-        <td><%= link_to 'Editar', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Eliminar', picture, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
-        <td><%= link_to 'Comentar', new_picture_comment_path(picture) %></td>
+        <th colspan="5"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-
-
+    <tbody>
+      <% @pictures.each do |picture| %>
+        <tr>
+          <td><%= image_tag picture.photo.variant(resize: '150x150').processed %></td>
+         <td><%= picture.user.name %></td>
+          <td><%= picture.place.name %></td>
+          <td><%= link_to 'Mostrar', picture %></td>
+          <td><%= link_to 'Eliminar', picture, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+          <td><%= link_to 'Comentar', new_picture_comment_path(picture) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
